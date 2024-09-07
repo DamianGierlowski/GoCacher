@@ -1,0 +1,18 @@
+meta {
+  name: Fetch
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/fetch
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "identifier": "1",
+    "key": "test"
+  }
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Insert
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/insert
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "identifier": "1",
+    "key": "test",
+    "value": "value2"
+  }
+}
