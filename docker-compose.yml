@@ -6,15 +6,15 @@ services:
     container_name: go_cacher
     working_dir: /app
     volumes:
-      - .:/app   # Mount the current directory to /app inside the container
-      - /app/go/pkg/mod   # Cache Go modules between builds
-    command: go run main.go  # Replace with your actual command to run the app
+      - .:/app
+      - /app/go/pkg/mod
+    command: go run main.go
     ports:
-      - "${HOST_PORT}:${HOST_PORT}"   # Map port 8080 on host to 8080 in the container
+      - "${HOST_PORT}:${HOST_PORT}"
     environment:
-      - GO111MODULE=on   # Enable Go modules
+      - GO111MODULE=on
       - CGO_ENABLED=0
-      - HOST_PORT=5010
+      - HOST_PORT=5010 # Map port for container to be available
     networks:
       - go-network
 
