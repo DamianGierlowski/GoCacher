@@ -3,17 +3,18 @@ version: '3.8'
 services:
   app:
     image: golang:1.23
-    container_name: go-app
+    container_name: go_cacher
     working_dir: /app
     volumes:
       - .:/app   # Mount the current directory to /app inside the container
       - /app/go/pkg/mod   # Cache Go modules between builds
-    command: go run cmd/api-server/main.go  # Replace with your actual command to run the app
+    command: go run main.go  # Replace with your actual command to run the app
     ports:
-      - "8080:8080"   # Map port 8080 on host to 8080 in the container
+      - "${HOST_PORT}:${HOST_PORT}"   # Map port 8080 on host to 8080 in the container
     environment:
       - GO111MODULE=on   # Enable Go modules
       - CGO_ENABLED=0
+      - HOST_PORT=5010
     networks:
       - go-network
 
